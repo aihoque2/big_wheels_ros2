@@ -42,51 +42,63 @@
 
 	<!-- ========== FACE LINKS ========== -->
 
-	<!-- Left Eye -->
 	<link name="eye-left-link">
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
-			<geometry>
-				<sphere radius="0.008" />
-			</geometry>
+			<geometry><sphere radius="0.009" /></geometry>
 			<material name="white" />
 		</visual>
 	</link>
 
-	<!-- Right Eye -->
 	<link name="eye-right-link">
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
-			<geometry>
-				<sphere radius="0.008" />
-			</geometry>
+			<geometry><sphere radius="0.009" /></geometry>
 			<material name="white" />
 		</visual>
 	</link>
 
-	<!-- Left Eye Pupil -->
 	<link name="pupil-left-link">
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
-			<geometry>
-				<sphere radius="0.004" />
-			</geometry>
+			<geometry><sphere radius="0.005" /></geometry>
 			<material name="black" />
 		</visual>
 	</link>
 
-	<!-- Right Eye Pupil -->
 	<link name="pupil-right-link">
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0" />
-			<geometry>
-				<sphere radius="0.004" />
-			</geometry>
+			<geometry><sphere radius="0.005" /></geometry>
 			<material name="black" />
 		</visual>
 	</link>
 
+	<link name="eyebrow-left-link">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0.4" />
+			<geometry><box size="0.003 0.018 0.003" /></geometry>
+			<material name="black" />
+		</visual>
+	</link>
 
+	<link name="eyebrow-right-link">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 -0.4" />
+			<geometry><box size="0.003 0.018 0.003" /></geometry>
+			<material name="black" />
+		</visual>
+	</link>
+
+	<link name="smile-link">
+	<visual>
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<geometry>
+		<mesh filename="package://car_robot/meshes/smile.stl" scale="1 1 1"/>
+		</geometry>
+		<material name="black" />
+	</visual>
+	</link>
 
 	<!-- ========== WHEEL LINKS ========== -->
 
@@ -94,14 +106,14 @@
 		<visual>
 			<origin xyz="0 0 0" rpy="1.57079 0 0" />
 			<geometry>
-				<cylinder radius ="0.05"  length="0.01" />
+				<cylinder radius ="0.05" length="0.01" />
 			</geometry>
 			<material name="green" />
 		</visual>
 		<collision>
 			<origin xyz="0 0 0" rpy="1.57079 0 0" />
 			<geometry>
-				<cylinder radius ="0.05"  length="0.01" />
+				<cylinder radius ="0.05" length="0.01" />
 			</geometry>
 		</collision>
 		<inertial>
@@ -116,14 +128,14 @@
 		<visual>
 			<origin xyz="0 0 0" rpy="1.57079 0 0" />
 			<geometry>
-				<cylinder radius ="0.05"  length="0.01" />
+				<cylinder radius ="0.05" length="0.01" />
 			</geometry>
 			<material name="green" />
 		</visual>
 		<collision>
 			<origin xyz="0 0 0" rpy="1.57079 0 0" />
 			<geometry>
-				<cylinder radius ="0.05"  length="0.01" />
+				<cylinder radius ="0.05" length="0.01" />
 			</geometry>
 		</collision>
 		<inertial>
@@ -138,14 +150,14 @@
 		<visual>
 			<origin xyz="0 0 0" rpy="1.57079 0 0" />
 			<geometry>
-				<cylinder radius ="0.05"  length="0.01" />
+				<cylinder radius ="0.05" length="0.01" />
 			</geometry>
 			<material name="green" />
 		</visual>
 		<collision>
 			<origin xyz="0 0 0" rpy="1.57079 0 0" />
 			<geometry>
-				<cylinder radius ="0.05"  length="0.01" />
+				<cylinder radius ="0.05" length="0.01" />
 			</geometry>
 		</collision>
 		<inertial>
@@ -160,16 +172,16 @@
 		<visual>
 			<origin xyz="0 0 0" rpy="1.57079 0 0" />
 			<geometry>
-				<cylinder radius ="0.05"  length="0.01" />
+				<cylinder radius ="0.05" length="0.01" />
 			</geometry>
 			<material name="green" />
-		</visual>	
+		</visual>
 		<collision>
 			<origin xyz="0 0 0" rpy="1.57079 0 0" />
 			<geometry>
-				<cylinder radius ="0.05"  length="0.01" />
+				<cylinder radius ="0.05" length="0.01" />
 			</geometry>
-		</collision>	
+		</collision>
 		<inertial>
 			<origin xyz="0 0 0" rpy="1.57079 0 0" />
 			<mass value="0.2" />
@@ -187,33 +199,49 @@
 	</joint>
 
 	<!-- ========== FACE JOINTS ========== -->
-	<!-- Front face is at x=+0.1 (half of chassis length 0.2) -->
-	<!-- Eyes sit at top half of face below center -->
 
 	<joint name="joint-eye-left" type="fixed">
 		<parent link="chassis-link"/>
 		<child link="eye-left-link"/>
-		<!-- x=front face, y=left, z=slightly above center -->
-		<origin xyz="0.102 0.03 0.01" rpy="0 0 0" />
+		<origin xyz="0.102 0.028 0.005" rpy="0 0 0" />
 	</joint>
 
 	<joint name="joint-eye-right" type="fixed">
 		<parent link="chassis-link"/>
 		<child link="eye-right-link"/>
-		<origin xyz="0.102 -0.03 0.01" rpy="0 0 0" />
+		<origin xyz="0.102 -0.028 0.005" rpy="0 0 0" />
 	</joint>
 
 	<joint name="joint-pupil-left" type="fixed">
 		<parent link="eye-left-link"/>
 		<child link="pupil-left-link"/>
-		<origin xyz="0.005 0 0" rpy="0 0 0" />
+		<origin xyz="0.006 -0.003 0.004" rpy="0 0 0" />
 	</joint>
 
 	<joint name="joint-pupil-right" type="fixed">
 		<parent link="eye-right-link"/>
 		<child link="pupil-right-link"/>
-		<origin xyz="0.005 0 0" rpy="0 0 0" />
+		<origin xyz="0.006 0.003 0.004" rpy="0 0 0" />
 	</joint>
+
+	<joint name="joint-eyebrow-left" type="fixed">
+		<parent link="chassis-link"/>
+		<child link="eyebrow-left-link"/>
+		<origin xyz="0.102 0.028 0.022" rpy="0 0 0" />
+	</joint>
+
+	<joint name="joint-eyebrow-right" type="fixed">
+		<parent link="chassis-link"/>
+		<child link="eyebrow-right-link"/>
+		<origin xyz="0.102 -0.028 0.022" rpy="0 0 0" />
+	</joint>
+
+<joint name="joint-smile" type="fixed">
+	<parent link="chassis-link"/>
+	<child link="smile-link"/>
+	<origin xyz="0.101 0.0 0.0" rpy="0 0 0" />
+	</joint>
+
 
 	<!-- ========== WHEEL JOINTS ========== -->
 	
